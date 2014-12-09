@@ -32,7 +32,7 @@ Example:
 
 ## Jsuite
 
-A specific way of collecting Tcases into a test suite.
+A specific way of collecting Jcases into a test suite.
 
 Example:
 
@@ -72,12 +72,12 @@ Example:
 
 ## Code Katas
 
-Write katas as Tsuites. Solve them in any language.
+Write katas as Jsuites. Solve them in any language.
 
 An example solution to FooBar:
 
 ```
-import tsuitekata # As yet unbuilt
+import jsuitekata # As yet unbuilt
 
 def foobar(num):
     if num % 3 == 0 and num % 5 == 0:
@@ -89,7 +89,7 @@ def foobar(num):
     else:
         return str(num)
 
-tsuitekata.answer_with(foobar)
+jsuitekata.answer_with(foobar)
 ```
 
 Which when ran might print something like:
