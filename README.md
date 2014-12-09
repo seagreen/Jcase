@@ -97,7 +97,7 @@ Which when ran might print something like:
 ```
 $ cat foobar.json | foobar.py
     ✔ "handles positive numbers correctly"
-    ✔ "handles positive numbers correctly"
+    ✔ "handles negative numbers correctly"
     ✘ "handles zero correctly"
 ```
 
