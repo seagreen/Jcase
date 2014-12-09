@@ -95,7 +95,7 @@ jsuitekata.answer_with(foobar)
 Which when ran might print something like:
 
 ```
-$ cat foobar.json | foobar.py
+$ cat foobar.json | ./foobar.py
     ✔ "handles positive numbers correctly"
     ✔ "handles negative numbers correctly"
     ✘ "handles zero correctly"
