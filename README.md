@@ -107,4 +107,4 @@ Self-explanatory.
 
 ## Test creation tools
 
-Standardized test formats make it easy to create GUIs or other tools for working with tests.
+Standardized formats make it easy to create GUIs or other tools for working with tests.
