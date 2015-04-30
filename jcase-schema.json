@@ -2,7 +2,6 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
     "required": ["assertions"],
-    "additionalProperties": false,
     "properties": {
         "description": {
             "type": "string"
@@ -15,7 +14,6 @@
             "items": {
                 "type":"object",
                 "required": ["input", "output"],
-                "additionalProperties": false,
                 "properties":{
                     "description": {
                         "type":"string"
