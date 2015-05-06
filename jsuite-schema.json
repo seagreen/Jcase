@@ -1,23 +1,17 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
-    "required": ["assertions"],
+    "required": ["cases"],
     "properties": {
         "description": {
             "type": "string"
         },
-        "context": {},
-        "assertions": {
+        "cases": {
             "type": "array",
             "minItems": 1,
             "additionalItems": false,
             "items": {
-                "type":"object",
-                "required": ["input", "output"],
-                "properties":{
-                    "input": {},
-                    "output": {}
-                }
+                "$ref": "./jcase-schema.json"
             }
         }
     }

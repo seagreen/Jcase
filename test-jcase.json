@@ -1,0 +1,46 @@
+{
+    "description": "Some simple tests to make sure the Jcase schema is written correctly",
+    "cases": [
+        {
+            "description": "Empty JSON objects are invalid.",
+            "assertions": [{
+                "input": {},
+                "output": false
+            }]
+        },
+        {
+            "description": "Minimal Jcase instances are valid.",
+            "assertions": [{
+                "input": {
+                    "assertions": [
+                        {
+                            "input": 1,
+                            "output": 1
+                        }
+                    ]
+                },
+                "output": true
+            }]
+        },
+        {
+            "description": "Fully featured Jcase instances are valid.",
+            "assertions": [{
+                "input": {
+                    "description": "foo",
+                    "context": 0,
+                    "assertions": [
+                        {
+                            "input": 1,
+                            "output": 1
+                        },
+                        {
+                            "input": 2,
+                            "output": 2
+                        }
+                    ]
+                },
+                "output": true
+            }]
+        }
+    ]
+}

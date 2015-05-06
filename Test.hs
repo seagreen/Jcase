@@ -4,7 +4,7 @@ import           Data.Aeson
 import qualified Data.ByteString.Lazy           as B
 import           Data.HashMap.Strict            (HashMap)
 import qualified Data.HashMap.Strict            as H
-import           Data.Jcase                     (Jcase, jcaseToHUnit)
+import           Data.Jcase                     (Jsuite, jsuiteToHUnit)
 import           Data.JsonSchema
 import           Data.Text                      (Text)
 import qualified Data.Vector                    as V
@@ -14,11 +14,11 @@ import qualified Test.HUnit                     as HU
 
 main :: IO ()
 main = do
-  schemaObj <- getSchemaObj
-  jcase     <- getJcase
+  jcaseSchema <- getJcaseSchema
+  jcaseTests  <- getJcaseTests
   defaultMain
-    [ testCase "The Jcase spec is a valid JSON Schema" (assertValid schemaObj)
-    , jcaseToHUnit (f schemaObj) jcase
+    [ testCase "The Jcase spec is a valid JSON Schema" (assertValid jcaseSchema)
+    , jsuiteToHUnit (f jcaseSchema) jcaseTests
     ]
   where
     assertValid :: HashMap Text Value -> HU.Assertion
@@ -27,20 +27,18 @@ main = do
 
     f :: HashMap Text Value -> Maybe Value -> Value -> Value
     f h _ input =
-      if V.null $ validate (compile draft4 H.empty $ RawSchema "" h) input
-        then Bool True
-        else Bool False
+      Bool . V.null $ validate (compile draft4 H.empty $ RawSchema "" h) input
 
-    getSchemaObj :: IO (HashMap Text Value)
-    getSchemaObj = do
+    getJcaseSchema :: IO (HashMap Text Value)
+    getJcaseSchema = do
       schemaBytes <- B.readFile "jcase-schema.json"
       case eitherDecode schemaBytes of
         Left e  -> error e
         Right a -> return a
 
-    getJcase :: IO Jcase
-    getJcase = do
-      testData <- B.readFile "test.json"
+    getJcaseTests :: IO Jsuite
+    getJcaseTests = do
+      testData <- B.readFile "test-jcase.json"
       case eitherDecode testData of
         Left e  -> error e
         Right a -> return a
